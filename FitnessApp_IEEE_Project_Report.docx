@@ -1,0 +1,135 @@
+IEEE Standard Project Report: Fitness App
+
+Abstract
+This project presents a full-stack Fitness App designed to help users track their daily calorie intake, exercise routines, and progress toward fitness goals. The backend is implemented in Python using Flask, JWT for authentication, and MongoDB for data storage. The frontend is built with React, providing an interactive and modern user experience. The system supports user registration, authentication, profile management, food and exercise logging, and personalized calorie goal tracking.
+
+1. Introduction
+With the increasing need for personal health management, digital solutions for fitness tracking have become essential. This project aims to provide users with an integrated platform to monitor their nutrition and exercise, set and achieve fitness goals, and visualize progress.
+
+2. Literature Survey
+Existing fitness tracking applications often lack flexibility or are locked behind paywalls. Open-source and customizable solutions are limited. This project builds upon modern web technologies to deliver a secure, extensible, and user-friendly experience.
+
+Related Works and Resources:
+- [MyFitnessPal](https://www.myfitnesspal.com/): Popular calorie and fitness tracking app
+- [Fitbit](https://www.fitbit.com/global/us/home): Wearable and app-based fitness tracking
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [React Documentation](https://react.dev/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [JWT Specification](https://jwt.io/introduction)
+- [Research: Mobile Apps for Health Behavior Change](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6162890/)
+
+3. System Analysis
+3.1 Requirements
+- User registration and secure authentication (JWT)
+- Email-based OTP verification
+- Food and exercise entry logging
+- Personalized calorie goal calculation
+- Dashboard summarizing daily progress
+
+3.2 Stakeholders
+- End-users seeking to monitor and improve their fitness
+- Developers seeking a customizable fitness tracking platform
+
+4. System Design
+4.1 Architecture
+- Backend: Python (Flask), MongoDB, JWT, RESTful API
+- Frontend: React, Context API for authentication state, modular components
+
+4.2 Database Design
+- Users, food_entries, exercise_entries collections in MongoDB
+
+4.3 Major Components
+- Backend: Handles authentication, profile management, food/exercise entry CRUD, calorie calculations
+- Frontend: Provides UI for login/register, dashboard, logs, and profile management
+
+5. Implementation
+5.1 Backend
+- Flask app with endpoints for registration, login, OTP, CRUD for food/exercise entries
+- JWT-based authentication
+- MongoDB for persistent storage
+- Helper functions for BMR/TDEE/calorie goal calculations
+
+5.2 Frontend
+- React app with protected routes (dashboard, logs, profile)
+- Context API for auth state
+- Components: Navbar, DailyCaloriesSummary, FoodEntryForm, ExerciseEntryForm, etc.
+- Service modules for API communication
+
+6. Testing
+- Backend: Unit tests for database and API endpoints (test_db.py)
+- Frontend: Manual and automated UI testing, validation of flows (login, entry, dashboard)
+
+7. Results
+- Functional web app with user authentication, food/exercise logging, and real-time dashboard
+- Responsive UI and secure backend
+- Accurate calorie tracking and goal management
+
+8. User Interface Screenshots
+Below are placeholders for key UI screens. Replace these with actual screenshots by inserting images in the appropriate locations:
+
+- [ ] Login Page Screenshot Here
+- [ ] Dashboard Screenshot Here
+- [ ] Food Log Screenshot Here
+- [ ] Exercise Log Screenshot Here
+- [ ] Profile Page Screenshot Here
+
+9. UML and Flow Diagrams
+
+9.1 System UML Diagram (PlantUML)
+```
+@startuml
+package "Backend (Flask)" {
+  class UserService
+  class AuthService
+  class FoodEntryService
+  class ExerciseEntryService
+}
+
+package "Frontend (React)" {
+  class Navbar
+  class Dashboard
+  class FoodLog
+  class ExerciseLog
+  class Profile
+}
+
+UserService <.. AuthService : uses
+Dashboard --> FoodLog
+Dashboard --> ExerciseLog
+Dashboard --> Profile
+FoodLog --> "Backend (Flask)"
+ExerciseLog --> "Backend (Flask)"
+Profile --> "Backend (Flask)"
+@enduml
+```
+
+9.2 User Flow Diagram (PlantUML)
+```
+@startuml
+start
+:User opens app;
+:Login/Register;
+if (Authenticated?) then (yes)
+  :Show Dashboard;
+  :View/Add/Edit Food/Exercise Entries;
+  :View Profile & Progress;
+else (no)
+  :Show Login/Register Page;
+endif
+stop
+@enduml
+```
+
+> To render these diagrams, copy the PlantUML code to [PlantUML Online Editor](https://plantuml.com/plantuml) or use any UML tool that supports PlantUML syntax.
+
+8. Conclusion
+The Fitness App successfully integrates modern web technologies to deliver a robust, user-friendly platform for fitness tracking. Future enhancements could include integration with wearable devices, social features, and advanced analytics.
+
+10. References
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [React Documentation](https://react.dev/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [JWT Specification](https://jwt.io/introduction)
+- [MyFitnessPal](https://www.myfitnesspal.com/)
+- [Fitbit](https://www.fitbit.com/global/us/home)
+- [Research: Mobile Apps for Health Behavior Change](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6162890/)

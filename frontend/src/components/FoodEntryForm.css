@@ -1,0 +1,67 @@
+.food-entry-form {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.food-entry-form h2 {
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.food-entry-form .form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.food-entry-form label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.food-entry-form .form-control {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--text-secondary);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.food-entry-form .form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.food-entry-form .btn-container {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.food-entry-form .btn {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.food-entry-form .error {
+  color: var(--error);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .food-entry-form {
+    padding: var(--spacing-md);
+    margin: 0 var(--spacing-sm);
+  }
+
+  .food-entry-form .btn-container {
+    flex-direction: column;
+  }
+}
