@@ -8,6 +8,7 @@ import FoodLog from './pages/FoodLog';
 import ExerciseLog from './pages/ExerciseLog';
 import Profile from './pages/Profile';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Login2 from './pages/Login2';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -33,6 +34,7 @@ const App = () => {
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path='/login2' element={<Login2/>}/>
               <Route
                 path="/"
                 element={
