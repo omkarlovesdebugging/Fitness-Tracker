@@ -7,7 +7,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key')
     
     # MongoDB configuration
-    MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/fitness_tracker')
+    MONGO_URI = os.environ.get('MONGO_URI', 'mongodb+srv://gholapomkar211004:4NlMtgAy7xi5FLEF@fitness.5hmdrtm.mongodb.net/?retryWrites=true&w=majority&appName=Fitness')
     
     # JWT configuration
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'dev-jwt-secret')
@@ -19,7 +19,7 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
-    MONGO_URI = os.environ.get('MONGO_URI_TEST', 'mongodb://localhost:27017/fitness_tracker_test')
+    MONGO_URI = os.environ.get('MONGO_URI_TEST', 'mongodb+srv://gholapomkar211004:4NlMtgAy7xi5FLEF@fitness.5hmdrtm.mongodb.net/?retryWrites=true&w=majority&appName=Fitness')
 
 class ProductionConfig(Config):
     DEBUG = False

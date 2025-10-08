@@ -21,14 +21,24 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
 jwt = JWTManager(app)
 
 # Setup MongoDB
-mongo_uri = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/fitness_tracker')
-client = MongoClient(mongo_uri)
-db = client.get_database()
+mongo_uri = os.environ.get(
+    'MONGO_URI',
+    'mongodb+srv://gholapomkar211004:4NlMtgAy7xi5FLEF@fitness.5hmdrtm.mongodb.net/?retryWrites=true&w=majority&appName=Fitness'
+)
+
+try:
+    client = MongoClient(mongo_uri)
+    db = client["fitness_tracker"]  # ✅ Explicitly define the database name
+    print("[INFO] Connected to MongoDB successfully.")
+except Exception as e:
+    print(f"[ERROR] Could not connect to MongoDB: {e}")
+    raise e
 
 # Collections
 users = db.users
 food_entries = db.food_entries
 exercise_entries = db.exercise_entries
+
 
 # Helper functions
 def calculate_bmr(weight, height, age, gender):
@@ -94,7 +104,7 @@ def request_otp():
         missing_vars = [var for var in smtp_vars if not os.environ.get(var)]
         if missing_vars:
             print(f"[ERROR] Missing SMTP environment variables: {', '.join(missing_vars)}")
-            return jsonify({'error': f'Missing SMTP config: {', '.join(missing_vars)}'}), 500
+            return jsonify({'error': f"Missing SMTP config: {', '.join(missing_vars)}"}), 500
         send_otp_email(email, otp)
     except Exception as e:
         print('[ERROR] Exception in /api/auth/request-otp:', str(e))

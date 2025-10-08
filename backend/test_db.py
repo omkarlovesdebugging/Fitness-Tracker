@@ -4,10 +4,10 @@ import sys
 def test_mongodb_connection():
     try:
         # Connect to MongoDB
-        client = MongoClient('mongodb://localhost:27017/fitness_tracker')
+        client = MongoClient('mongodb+srv://gholapomkar211004:4NlMtgAy7xi5FLEF@fitness.5hmdrtm.mongodb.net/?retryWrites=true&w=majority&appName=Fitness')
         
         # Get database info
-        db = client.get_database()
+        db = client["fitness_tracker"]
         
         # Test database operations
         collections = db.list_collection_names()
