@@ -8,7 +8,8 @@ import { getExerciseEntries } from '../services/exerciseService';
 import { getUserProfile } from '../services/userService';
 import { useAuth } from '../context/AuthContext';
 import '../styles/dashboard.css';
-//hello omkar
+import {BMICalculator} from '../components/BMICalculator';
+
 const Dashboard = () => {
   const { user } = useAuth();
   const [date, setDate] = useState(new Date());
@@ -159,6 +160,13 @@ const Dashboard = () => {
               <span role="img" aria-label="exercise">💪</span>
               Add Exercise
             </button>
+            <button
+              onClick={() => setActiveTab('bmi')}
+              className={`tab-button ${activeTab === 'bmi' ? 'active' : ''}`}
+            >
+              <span role="img" aria-label="bmi">⚖️</span>
+              BMI Calculator
+            </button>
           </div>
 
           <div className="tab-content mt-6">
@@ -217,6 +225,13 @@ const Dashboard = () => {
               <div className="form-container">
                 <h2 className="form-title">Add Exercise Entry</h2>
                 <ExerciseEntryForm date={date} onSuccess={refreshData} />
+              </div>
+            )}
+            {/* BMI Calculator form */}
+            {activeTab === 'bmi' && (
+              <div className="form-container">
+                <h2 className="form-title">Calculate Your BMI ⚖️</h2>
+                <BMICalculator date={date} onSuccess={refreshData} />
               </div>
             )}
           </div>
